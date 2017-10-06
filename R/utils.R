@@ -89,3 +89,12 @@ escape_regex <- function(x) {
 dir.exists <- function(paths) {
   file.exists(paths) & file.info(paths)$isdir
 }
+
+
+with_language <- function(code, language = NULL) {
+  if (!is.null(language)) {
+    withr::local_envvar(list(LANGUAGE = language))
+  }
+
+  code
+}
